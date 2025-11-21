@@ -1,0 +1,1 @@
+celcius = int(input("Masukkan suhu (dalam bentuk celcius) disini... "))
