@@ -32,7 +32,7 @@ def cetak_hasil(konversi):
         print(celcius_fahrenheit(celcius))
     elif konversi == 2:
         celcius = int(input("Input Derajat Celcius: "))
-        print() # Masukkan Fungsi kalkulasi disini
+        print(celcius_kelvin(celcius))
     elif konversi == 3:
         fahrenheit = int(input("Input Derajat Fahrenheit: "))
         print() # Masukkan Fungsi kalkulasi disini
