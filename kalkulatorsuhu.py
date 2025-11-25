@@ -10,6 +10,17 @@ def celcius_fahrenheit(celcius):
     fahrenheit = (RASIOFAHRENHEIT * celcius) + OFFSETFAHRENHEIT
     return fahrenheit
 
+def celcius_kelvin(celcius):
+    """
+    Mengkalkulasikan hasil konversi suhu dari Celcius ke Fahrenheit
+
+    :param celcius: Nilai celcius yang akan dikonversikan
+    :return: Mengembalikan hasil konversi Celcius ke Fahrenheit
+    """
+    OFFSETKELVIN = 273.15
+    kelvin = celcius + OFFSETKELVIN
+    return kelvin
+
 def cetak_hasil(konversi):
     """
     Memilih Jenis konversi kemudian mencetak hasil kalkulasi suhu
