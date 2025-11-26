@@ -207,6 +207,6 @@ toggle_btn.pack(pady=10)
 theme_label = tk.Label(root, text="Tema: Dark")
 theme_label.pack()
 
-apply_theme("dark")
+apply_theme("light")
 
 root.mainloop()
