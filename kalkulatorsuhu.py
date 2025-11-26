@@ -18,7 +18,7 @@ def celcius_kelvin(celcius):
     :return: Mengembalikan hasil konversi Celcius ke Fahrenheit
     """
     OFFSET_KELVIN = 273.15
-    kelvin = celcius + OFFSETKELVIN
+    kelvin = celcius + OFFSET_KELVIN
     return kelvin
 
 def fahrenheit_celcius(fahrenheit):
@@ -56,6 +56,7 @@ def kelvin_celcius(kelvin):
     OFFSET_KELVIN = 277.15
     celcius = kelvin - OFFSET_KELVIN
     return celcius
+
 def kelvin_fahrenheit(kelvin):
     """
     Mengkalkulasikan hasil konversi suhu dari Kelvin ke Fahrenheit
@@ -83,16 +84,16 @@ def cetak_hasil(konversi):
         print(celcius_kelvin(celcius))
     elif konversi == 3:
         fahrenheit = int(input("Input Derajat Fahrenheit: "))
-        print() # Masukkan Fungsi kalkulasi disini
+        print(fahrenheit_celcius(fahrenheit)) # Masukkan Fungsi kalkulasi disini
     elif konversi == 4:
         fahrenheit = int(input("Input Derajat Fahrenheit: "))
-        print() # Masukkan Fungsi kalkulasi disini
+        print(fahrenheit_kelvin(fahrenheit)) # Masukkan Fungsi kalkulasi disini
     elif konversi == 5:
         kelvin = int(input("Input Derajat Kelvin: "))
-        print() # Masukkan Fungsi kalkulasi disini
+        print(kelvin_celcius(kelvin)) # Masukkan Fungsi kalkulasi disini
     elif konversi == 6:
         kelvin = int(input("Input Derajat Kelvin: "))
-        print() # Masukkan Fungsi kalkulasi disini
+        print(kelvin_fahrenheit(kelvin)) # Masukkan Fungsi kalkulasi disini
 
 # Main Program
 print("Program Kalkulator Suhu")
