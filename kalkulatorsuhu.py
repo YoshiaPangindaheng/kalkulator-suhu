@@ -159,7 +159,20 @@ def konversi_suhu():
         label_hasil.config(text="Error: Input tidak valid!")
 
 # Tombol konversi
-btn = tk.Button(root, text="Konversi", command=konversi_suhu)
-btn.pack(pady=10)
+def on_enter(e):
+    btn.config(bg=button_hover)
+
+def on_leave(e):
+    btn.config(bg=button_bg)
+
+btn = tk.Button(root, text="Konversi",
+                command=konversi_suhu,
+                bg=button_bg, fg=fg_color,
+                activebackground=button_hover,
+                relief="flat", padx=10, pady=5)
+btn.pack(pady=5)
+
+btn.bind("<Enter>", on_enter)
+btn.bind("<Leave>", on_leave)
 
 root.mainloop()
