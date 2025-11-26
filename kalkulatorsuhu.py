@@ -77,6 +77,31 @@ root = tk.Tk()
 root.title("Kalkulator Suhu")
 root.geometry("380x240")
 
+# Ini for tema gelap neh
+bg_color = "#1e1e1e"
+fg_color = "#ffffff"
+entry_bg = "#2a2a2a"
+button_bg = "#3b3b3b"
+button_hover = "#505050"
+combo_bg = "#2a2a2a"
+
+root.configure(bg=bg_color)
+
+style = ttk.Style()
+style.theme_use("clam")
+
+style.configure("TCombobox",
+                fieldbackground=combo_bg,
+                background=combo_bg,
+                foreground=fg_color,
+                bordercolor="#555555",
+                arrowcolor=fg_color)
+
+style.map("TCombobox",
+          fieldbackground=[("readonly", combo_bg)],
+          foreground=[("readonly", fg_color)],
+          background=[("readonly", combo_bg)])
+
 # Label input
 label_input = tk.Label(root, text="Masukkan nilai suhu:")
 label_input.pack(pady=5)
