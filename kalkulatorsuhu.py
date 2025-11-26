@@ -15,7 +15,7 @@ def celcius_fahrenheit(celcius):
     :return: Mengembalikan hasil konversi Celcius ke Fahrenheit
     """
     OFFSET_FAHRENHEIT = 32
-    RASIO_CELCIUS_FAHRENHEIT = 5/9
+    RASIO_CELCIUS_FAHRENHEIT = 9/5
     fahrenheit = (RASIO_CELCIUS_FAHRENHEIT * celcius) + OFFSET_FAHRENHEIT
     return fahrenheit
 
@@ -39,7 +39,7 @@ def fahrenheit_celcius(fahrenheit):
     """
     OFFSET_FAHRENHEIT = 32
     RASIO_CELCIUS_FAHRENHEIT = 5/9
-    celcius = (fahrenheit - OFFSET_FAHRENHEIT) / RASIO_CELCIUS_FAHRENHEIT
+    celcius = (fahrenheit - OFFSET_FAHRENHEIT) * RASIO_CELCIUS_FAHRENHEIT
     return celcius
 
 def fahrenheit_kelvin(fahrenheit):
@@ -50,7 +50,7 @@ def fahrenheit_kelvin(fahrenheit):
     :return: Mengembalikan hasil konversi Fahrenheit ke Kelvin
     """
     OFFSET_FAHRENHEIT = 32
-    OFFSET_KELVIN = 277.15
+    OFFSET_KELVIN = 273.15
     RASIO_CElCIUS_FAHRENHEIT = 5/9
     kelvin = (fahrenheit - OFFSET_FAHRENHEIT) * RASIO_CElCIUS_FAHRENHEIT + OFFSET_KELVIN
     return kelvin
@@ -62,7 +62,7 @@ def kelvin_celcius(kelvin):
     :param kelvin: Nilai kelvin yang akan dikonversikan
     :return: Mengembalikan hasil konversi Kelvin ke Celcius
     """
-    OFFSET_KELVIN = 277.15
+    OFFSET_KELVIN = 273.15
     celcius = kelvin - OFFSET_KELVIN
     return celcius
 
@@ -74,8 +74,8 @@ def kelvin_fahrenheit(kelvin):
     :return: Mengembalikan hasil konversi Kelvin ke Fahrenheit
     """
     OFFSET_FAHRENHEIT = 32
-    OFFSET_KELVIN = 277.15
-    RASIO_CELCIUS_FAHRENHEIT = 5/9
+    OFFSET_KELVIN = 273.15
+    RASIO_CELCIUS_FAHRENHEIT = 9/5
     fahrenheit = (kelvin - OFFSET_KELVIN) * RASIO_CELCIUS_FAHRENHEIT + OFFSET_FAHRENHEIT
     return fahrenheit
 
