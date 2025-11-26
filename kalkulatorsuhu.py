@@ -77,39 +77,71 @@ root = tk.Tk()
 root.title("Kalkulator Suhu")
 root.geometry("380x240")
 
-# Ini for tema gelap neh
-bg_color = "#1e1e1e"
-fg_color = "#ffffff"
-entry_bg = "#2a2a2a"
-button_bg = "#3b3b3b"
-button_hover = "#505050"
-combo_bg = "#2a2a2a"
+# Tema for kedua mode light dan dark
+themes = {
+    "light": {
+        "bg": "#ffffff",
+        "fg": "#000000",
+        "entry_bg": "#f0f0f0",
+        "button_bg": "#e0e0e0",
+        "button_hover": "#c8c8c8",
+        "combo_bg": "#f0f0f0",
+        "combo_fg": "#000000"
+    },
+    "dark": {
+        "bg": "#1e1e1e",
+        "fg": "#ffffff",
+        "entry_bg": "#2a2a2a",
+        "button_bg": "#3b3b3b",
+        "button_hover": "#505050",
+        "combo_bg": "#2a2a2a",
+        "combo_fg": "#ffffff"
+    }
+}
 
-root.configure(bg=bg_color)
+current_theme = "dark"   # default
+
+# Fungsi untuk bisa mengaplikasikan tema setiap kali tekan tombol
+def apply_theme(theme_name):
+    global current_theme
+    current_theme = theme_name
+    t = themes[theme_name]
+
+    # Window background
+    root.configure(bg=t["bg"])
+
+    # Label colors
+    label_input.config(bg=t["bg"], fg=t["fg"])
+    label_pilihan.config(bg=t["bg"], fg=t["fg"])
+    label_hasil.config(bg=t["bg"], fg=t["fg"])
+    theme_label.config(bg=t["bg"], fg=t["fg"])
+
+    # Entry style
+    entry_nilai.config(bg=t["entry_bg"], fg=t["fg"], insertbackground=t["fg"])
+
+    # Button style
+    btn.config(bg=t["button_bg"], fg=t["fg"], activebackground=t["button_hover"])
+    toggle_btn.config(bg=t["button_bg"], fg=t["fg"], activebackground=t["button_hover"])
+
+    # Combobox style
+    style.configure(
+        "TCombobox",
+        fieldbackground=t["combo_bg"],
+        background=t["combo_bg"],
+        foreground=t["combo_fg"],
+        arrowcolor=t["combo_fg"]
+    )
+    dropdown.configure(background=t["combo_bg"])
 
 style = ttk.Style()
 style.theme_use("clam")
 
-style.configure("TCombobox",
-                fieldbackground=combo_bg,
-                background=combo_bg,
-                foreground=fg_color,
-                bordercolor="#555555",
-                arrowcolor=fg_color)
-
-style.map("TCombobox",
-          fieldbackground=[("readonly", combo_bg)],
-          foreground=[("readonly", fg_color)],
-          background=[("readonly", combo_bg)])
-
-# Label input
 label_input = tk.Label(root, text="Masukkan nilai suhu:")
 label_input.pack(pady=5)
 
-entry_nilai = tk.Entry(root, width=20)
+entry_nilai = tk.Entry(root, width=20, relief="solid", borderwidth=1)
 entry_nilai.pack()
 
-# Pilihan konversi
 label_pilihan = tk.Label(root, text="Pilih jenis konversi:")
 label_pilihan.pack(pady=5)
 
@@ -126,11 +158,10 @@ selected_option = tk.StringVar()
 selected_option.set(opsi[0])
 
 dropdown = ttk.Combobox(root, textvariable=selected_option, values=opsi, state="readonly")
-dropdown.pack()
+dropdown.pack(pady=2)
 
-# Label hasil
 label_hasil = tk.Label(root, text="Hasil: -", font=("Arial", 12))
-label_hasil.pack(pady=10)
+label_hasil.pack(pady=15)
 
 # Fungsi tombol
 def konversi_suhu():
@@ -159,20 +190,23 @@ def konversi_suhu():
         label_hasil.config(text="Error: Input tidak valid!")
 
 # Tombol konversi
-def on_enter(e):
-    btn.config(bg=button_hover)
-
-def on_leave(e):
-    btn.config(bg=button_bg)
-
-btn = tk.Button(root, text="Konversi",
-                command=konversi_suhu,
-                bg=button_bg, fg=fg_color,
-                activebackground=button_hover,
-                relief="flat", padx=10, pady=5)
+btn = tk.Button(root, text="Konversi", command=konversi_suhu, relief="flat", padx=10, pady=5)
 btn.pack(pady=5)
 
-btn.bind("<Enter>", on_enter)
-btn.bind("<Leave>", on_leave)
+def toggle_theme():
+    if current_theme == "dark":
+        apply_theme("light")
+        theme_label.config(text="Tema: Light")
+    else:
+        apply_theme("dark")
+        theme_label.config(text="Tema: Dark")
+
+toggle_btn = tk.Button(root, text="Toggle Theme", command=toggle_theme, relief="flat", padx=10, pady=5)
+toggle_btn.pack(pady=10)
+
+theme_label = tk.Label(root, text="Tema: Dark")
+theme_label.pack()
+
+apply_theme("dark")
 
 root.mainloop()
