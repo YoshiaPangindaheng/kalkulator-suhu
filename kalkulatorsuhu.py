@@ -3,7 +3,7 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 app = ctk.CTk()
-app.title("Kalkulator Suhu — CustomTkinter")
+app.title("Kalkulator Suhu")
 app.geometry("420x420")
 app.resizable(False, False)
 
@@ -89,20 +89,11 @@ title_label = ctk.CTkLabel(
 )
 title_label.pack(pady=(15, 10))
 
-root = tk.Tk()
-root.title("Kalkulator Suhu")
-root.geometry("380x240")
+input_label = ctk.CTkLabel(frame, text="Masukkan nilai suhu:", font=("Segoe UI", 13))
+input_label.pack(pady=(5, 5))
 
-# Label input
-label_input = tk.Label(root, text="Masukkan nilai suhu:")
-label_input.pack(pady=5)
-
-entry_nilai = tk.Entry(root, width=20)
-entry_nilai.pack()
-
-# Pilihan konversi
-label_pilihan = tk.Label(root, text="Pilih jenis konversi:")
-label_pilihan.pack(pady=5)
+entry_value = ctk.CTkEntry(frame, width=200, height=40, font=("Segoe UI", 14))
+entry_value.pack()
 
 opsi = [
     "Celsius → Fahrenheit",
@@ -113,21 +104,21 @@ opsi = [
     "Kelvin → Fahrenheit"
 ]
 
-selected_option = tk.StringVar()
-selected_option.set(opsi[0])
+dropdown_label = ctk.CTkLabel(frame, text="Pilih jenis konversi:", font=("Segoe UI", 13))
+dropdown_label.pack(pady=(20, 5))
 
-dropdown = ttk.Combobox(root, textvariable=selected_option, values=opsi, state="readonly")
+dropdown = ctk.CTkOptionMenu(frame, values=opsi, width=200, height=40, font=("Segoe UI", 14))
 dropdown.pack()
 
 # Label hasil
-label_hasil = tk.Label(root, text="Hasil: -", font=("Arial", 12))
-label_hasil.pack(pady=10)
+result_label = ctk.CTkLabel(frame, text="Hasil: -", font=("Segoe UI", 16))
+result_label.pack(pady=(20, 10))
 
 # Fungsi tombol
 def konversi_suhu():
     try:
-        nilai = float(entry_nilai.get())
-        pilihan = selected_option.get()
+        nilai = float(entry_value.get())
+        pilihan = dropdown.get()
 
         if pilihan == "Celsius → Fahrenheit":
             hasil = celcius_fahrenheit(nilai)
@@ -144,13 +135,39 @@ def konversi_suhu():
         else:
             hasil = "Error"
 
-        label_hasil.config(text=f"Hasil: {hasil}")
+        result_label.configure(text=f"Hasil: {hasil}")
+    except:
+        result_label.configure(text="Error: input tidak valid!")
 
-    except ValueError:
-        label_hasil.config(text="Error: Input tidak valid!")
+convert_btn = ctk.CTkButton(
+    frame,
+    text="Konversi",
+    width=200,
+    height=50,
+    font=("Segoe UI", 15, "bold"),
+    command=konversi_suhu
+)
+convert_btn.pack(pady=10)
 
-# Tombol konversi
-btn = tk.Button(root, text="Konversi", command=konversi_suhu)
-btn.pack(pady=10)
+# Toggle untuk yaaa light and dark mode
+def toggle_theme():
+    current = ctk.get_appearance_mode()
+    if current == "Dark":
+        ctk.set_appearance_mode("light")
+        theme_label.configure(text="Tema: Light")
+    else:
+        ctk.set_appearance_mode("dark")
+        theme_label.configure(text="Tema: Dark")
 
-root.mainloop()
+theme_btn = ctk.CTkButton(
+    frame, text="Toggle Tema",
+    width=150, height=35,
+    font=("Segoe UI", 12),
+    command=toggle_theme
+)
+theme_btn.pack(pady=5)
+
+theme_label = ctk.CTkLabel(frame, text="Tema: Dark", font=("Segoe UI", 12))
+theme_label.pack()
+
+app.mainloop()

@@ -1,2 +1,0 @@
-pip install pyinstaller
-pyinstaller --noconsole --onefile --windowed kalkulator_suhu.py
