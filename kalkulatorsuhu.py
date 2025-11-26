@@ -5,9 +5,9 @@ def celcius_fahrenheit(celcius):
     :param celcius: Nilai celcius yang akan dikonversikan
     :return: Mengembalikan hasil konversi Celcius ke Fahrenheit
     """
-    OFFSETFAHRENHEIT = 32
-    RASIOFAHRENHEIT = 1.8
-    fahrenheit = (RASIOFAHRENHEIT * celcius) + OFFSETFAHRENHEIT
+    OFFSET_FAHRENHEIT = 32
+    RASIO_CELCIUS_FAHRENHEIT = 5/9
+    fahrenheit = (RASIO_CELCIUS_FAHRENHEIT * celcius) + OFFSET_FAHRENHEIT
     return fahrenheit
 
 def celcius_kelvin(celcius):
@@ -17,9 +17,57 @@ def celcius_kelvin(celcius):
     :param celcius: Nilai celcius yang akan dikonversikan
     :return: Mengembalikan hasil konversi Celcius ke Fahrenheit
     """
-    OFFSETKELVIN = 273.15
+    OFFSET_KELVIN = 273.15
     kelvin = celcius + OFFSETKELVIN
     return kelvin
+
+def fahrenheit_celcius(fahrenheit):
+    """
+    Mengkalkulasikan hasil konversi suhu dari Fahrenheit ke Celcius
+
+    :param fahrenheit: Nilai fahrenheit yang akan dikonversikan
+    :return: Mengembalikan hasil konversi Fahrenheit ke Celcius
+    """
+    OFFSET_FAHRENHEIT = 32
+    RASIO_CELCIUS_FAHRENHEIT = 5/9
+    celcius = (fahrenheit - OFFSET_FAHRENHEIT) / RASIO_CELCIUS_FAHRENHEIT
+    return celcius
+
+def fahrenheit_kelvin(fahrenheit):
+    """
+    Mengkalkulasikan hasil konversi suhu dari Fahrenheit ke Kelvin
+
+    :param fahrenheit: Nilai fahrenheit yang akan dikonversikan
+    :return: Mengembalikan hasil konversi Fahrenheit ke Kelvin
+    """
+    OFFSET_FAHRENHEIT = 32
+    OFFSET_KELVIN = 277.15
+    RASIO_CElCIUS_FAHRENHEIT = 5/9
+    kelvin = (fahrenheit - OFFSET_FAHRENHEIT) * RASIO_CElCIUS_FAHRENHEIT + OFFSET_KELVIN
+    return kelvin
+
+def kelvin_celcius(kelvin):
+    """
+    Mengkalkulasikan hasil konversi suhu dari Kelvin ke Celcius
+
+    :param kelvin: Nilai kelvin yang akan dikonversikan
+    :return: Mengembalikan hasil konversi Kelvin ke Celcius
+    """
+    OFFSET_KELVIN = 277.15
+    celcius = kelvin - OFFSET_KELVIN
+    return celcius
+def kelvin_fahrenheit(kelvin):
+    """
+    Mengkalkulasikan hasil konversi suhu dari Kelvin ke Fahrenheit
+
+    :param kelvin: Nilai Kelvin yang akan dikonversikan
+    :return: Mengembalikan hasil konversi Kelvin ke Fahrenheit
+    """
+    OFFSET_FAHRENHEIT = 32
+    OFFSET_KELVIN = 277.15
+    RASIO_CELCIUS_FAHRENHEIT = 5/9
+    fahrenheit = (kelvin - OFFSET_KELVIN) * RASIO_CELCIUS_FAHRENHEIT + OFFSET_FAHRENHEIT
+    return fahrenheit
 
 def cetak_hasil(konversi):
     """
