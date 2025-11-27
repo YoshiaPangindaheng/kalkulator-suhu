@@ -1,7 +1,7 @@
 Tugas Version Control System (VCS) Pemprog, Kelompok Garuda.
 
 # CARA MEMAKAI
-[Download file kalkulator suhunya](https://github.com/YoshiaPangindaheng/kalkulator-suhu/releases/download/public-akses/kalkulatorsuhu.exe). Buka file tersebut, dan silahkan konversi sesuka hati!
+[Download file kalkulator suhunya](https://github.com/YoshiaPangindaheng/kalkulator-suhu/releases/download/v1.1/kalkulatorsuhu.exe). Buka file tersebut, dan silahkan konversi sesuka hati!
 
 # Project Manager
 [Yoshia Aditya Tafarrel Pangindaheng](https://github.com/YoshiaPangindaheng) (250211060016)
